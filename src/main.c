@@ -10,6 +10,29 @@
 char buffer_entrada[TAM_BUFFER];
 char buffer_saida[TAM_BUFFER];
 
+// Função que recebe um caracter texto criptografado e um caracter da palavra chave e retorna o caracter descriptografado
+char decifrador(char charOrig, char charCifra)
+{
+
+  // Se o caracter em questão é uma das letras do alfabeto
+  if ( (charOrig >= 'A') && (charOrig <= 'Z') )
+  {
+    // Obtemos as posições dos caracteres no alfabeto (1 - 26)
+    char posCharOrig = charOrig - 'A';
+    char posCharCifra = charCifra - 'A';
+
+    // Voltamos posCharCifra posições no caracter posCharOrig e salvamos o caracter resultante
+    char charMod = 'A'+( posCharOrig - posCharCifra + ('Z'-'A'+1) ) % ('Z'-'A'+1);
+  }
+  // Do contrário retornamos o caracter sem alteração
+  else
+  {
+    return charOrig;
+  }
+  
+
+}
+
 int main()
 {
   const char palChave[] = "SENHASECRETA";
